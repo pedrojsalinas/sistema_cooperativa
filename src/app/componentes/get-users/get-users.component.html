@@ -1,0 +1,22 @@
+<h1>SOCIOS</h1>
+<p class="path-title">{{fecha}}</p>
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+<thead>
+  <tr>
+    <th>Id</th>
+    <th>Nombre</th>
+    <th>Apellido</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let socio of socios" [routerLink]="['/socios',socio.id]">
+    <td>{{ socio.id }}</td>
+    <td>{{ socio.nombre }}</td>
+    <td>{{ socio.apellido }}</td>
+  </tr>
+</tbody>
+</table>
+
+
+
+

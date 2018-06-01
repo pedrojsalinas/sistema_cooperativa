@@ -1,0 +1,33 @@
+<h2>Agregar Movimiento</h2>
+<form class="example-form" #movimiento="ngForm"  (ngSubmit) = "addMovimiento(movimiento.value)">
+  <mat-form-field class="example-full-width">
+    <input type="text" placeholder="Socio" aria-label="Socio" matInput 
+    [formControl]="myControl" 
+    [matAutocomplete]="auto"
+    [(ngModel)]="socio"
+    (ngModelChange)="dataChanged($event)">
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" autoActiveFirstOption>
+      <mat-option *ngFor="let socio of filteredSocios | async" [value]="socio" >
+       <span>{{ socio.nombre }} {{ socio.apellido }}</span> |
+        <small>Cédula: {{socio.id}}</small>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-select placeholder="Cuenta"  name="cuenta">
+      <mat-option *ngFor="let cuenta of cuentas " [value]="cuenta.numero">{{cuenta.numero}}</mat-option>
+    </mat-select>
+  </mat-form-field >
+  <mat-form-field class="example-full-width">
+  <mat-select [(value)]="selected" placeholder="Transacción">
+    <mat-option value="option1">Deposito</mat-option>
+    <mat-option value="option2">Retiro</mat-option>
+  </mat-select>
+</mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Valor" type="number" >
+  </mat-form-field> 
+  <button mat-raised-button class="example-full-width" color="primary" type="submit" >Guardar</button>
+</form>
+<p>Id: {{socio?.id}}</p>
+<p>Nombre: {{socio?.nombre}}</p>

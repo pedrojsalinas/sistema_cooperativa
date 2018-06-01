@@ -1,0 +1,13 @@
+<form #socio="ngForm" (ngSubmit) = "addSocio(socio.value)" >
+  <fieldset>
+    <div class="form-group">
+      <label for="exampleInputNom">Nombre</label>
+      <input class="form-control" id="exampleInputNom" [(ngModel)]="socio.nombre" name="nombre" placeholder="Ingrese un nombre" type="text">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputApellido">Apellido</label>
+      <input class="form-control" id="exampleInputApellido" name="apellido" [(ngModel)]="socio.apellido"  placeholder="Apellido" type="text">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </fieldset>
+</form>

@@ -1,0 +1,21 @@
+<h2>Agregar Cuenta</h2>
+<form class="example-form" #cuenta="ngForm"  (ngSubmit) = "addCuenta(cuenta.value)">
+  <mat-form-field class="example-full-width">
+    <input type="text" placeholder="Socio" aria-label="Socio" matInput 
+    [formControl]="myControl" 
+    [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" autoActiveFirstOption>
+      <mat-option *ngFor="let socio of filteredSocios | async" [value]="socio">
+       <span>{{ socio.nombre }} {{ socio.apellido }}</span> |
+        <small>Cédula: {{socio.id}}</small>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-select placeholder="Cuenta" [(value)]="selected">
+      <mat-option value="ahorro">Ahorro</mat-option>
+      <mat-option value="corriente">Corriente</mat-option>
+    </mat-select>
+  </mat-form-field >
+  <button mat-raised-button class="example-full-width" color="primary" type="submit" >Guardar</button>
+</form>
